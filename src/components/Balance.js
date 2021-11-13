@@ -6,14 +6,16 @@ const Balance = () => {
 
   const amounts = transactions.map((transaction) => transaction.amount);
 
-  const total = amounts
-    .reduce((accumulater, item) => (accumulater += item), 0)
-    .toFixed(2);
+  const total = amounts.reduce((accumulater, item) => (accumulater += item), 0);
+
+  const sign = total < 0 && "-";
 
   return (
     <div>
       <h4>Your Balance</h4>
-      <h1>${total}</h1>
+      <h1>
+        {sign}${Math.abs(total).toFixed(2)}
+      </h1>
     </div>
   );
 };
